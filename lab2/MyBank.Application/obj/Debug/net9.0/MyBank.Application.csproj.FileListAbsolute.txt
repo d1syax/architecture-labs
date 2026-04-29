@@ -1,0 +1,16 @@
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/bin/Debug/net9.0/MyBank.Application.deps.json
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/bin/Debug/net9.0/MyBank.Application.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/bin/Debug/net9.0/MyBank.Application.pdb
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/bin/Debug/net9.0/MyBank.Domain.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/bin/Debug/net9.0/MyBank.Domain.pdb
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.csproj.AssemblyReference.cache
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.AssemblyInfoInputs.cache
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.AssemblyInfo.cs
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.csproj.CoreCompileInputs.cache
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.sourcelink.json
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.A.B8377B33.Up2Date
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/refint/MyBank.Application.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/MyBank.Application.pdb
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/Debug/net9.0/ref/MyBank.Application.dll
