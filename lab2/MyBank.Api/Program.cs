@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyBank.Application.Auth;
 using MyBank.Application.Accounts;
 using MyBank.Domain.Repositories;
+using MyBank.Domain.Factories;
 using MyBank.Infrastructure.Auth;
 using MyBank.Infrastructure.Persistence;
 using MyBank.Infrastructure.Persistence.Repositories;
@@ -18,6 +19,9 @@ builder.Services.AddDbContext<BankDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+
+builder.Services.AddScoped<UserFactory>();
+builder.Services.AddScoped<AccountFactory>();
 
 builder.Services.AddScoped<ITokenService, JwtTokenService>();
 
