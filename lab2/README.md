@@ -1,44 +1,62 @@
-# Autistic Bank API — Lab 2
+# Лабораторна робота 2: Шарова архітектура та доменна модель
+*Done by: YOUR_NAME IM-XX*
 
-Clean Architecture рефакторинг лаби 1. 4 окремих шари з інверсією залежностей
-та Rich Domain Model.
+## Prerequisites
+- .NET 9 SDK
+- PostgreSQL 15+
 
-## Структура
-MyBank.Domain        ← бізнес-логіка, інтерфейси, доменні помилки
-MyBank.Application   ← use cases, оркестрація
-MyBank.Infrastructure ← EF Core, репозиторії, маппери, JWT
-MyBank.Api           ← контролери, DTO
+## Installation
 
-## Запуск
+Clone the repository:
+```bash
+git clone https://github.com/YOUR_USERNAME/architecture-labs.git
+cd architecture-labs/lab2
+```
 
-1. Налаштуй `MyBank.Api/appsettings.json` — вкажи пароль PostgreSQL
-2. Застосуй міграцію:
+## Configuration
+
+Open `MyBank.Api/appsettings.json` and set your PostgreSQL credentials:
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Port=5432;Database=autistic_bank_lab2;Username=postgres;Password=YOUR_PASSWORD"
+}
+```
+
+## Running
+
+```bash
+cd MyBank.Api
+dotnet run
+```
+
+## Migrations
 
 ```bash
 cd MyBank.Api
 dotnet ef database update --project ../MyBank.Infrastructure/MyBank.Infrastructure.csproj
 ```
 
-3. Запусти:
-
-```bash
-dotnet run
-```
-
-## Тести
+## Testing
 
 ```bash
 cd MyBank.Tests
 dotnet test
 ```
 
-## Ендпоінти
+## Project Structure
+MyBank.Domain           ← доменні моделі, інтерфейси репозиторіїв, доменні помилки
+MyBank.Application      ← сервіси, use cases, оркестрація
+MyBank.Infrastructure   ← EF Core, репозиторії, маппери, JWT
+MyBank.Api              ← контролери, DTO
+MyBank.Tests            ← unit та integration тести
 
-| Method | URL | Auth | Опис |
-|--------|-----|------|------|
-| POST | /api/auth/register | — | Реєстрація |
-| POST | /api/auth/login | — | Логін |
-| POST | /api/accounts | JWT | Створення рахунку |
-| GET | /api/accounts | JWT | Мої рахунки |
-| POST | /api/accounts/transfer | JWT | Переказ |
-| POST | /api/accounts/{id}/deposit | JWT | Поповнення |
+## Endpoints
+
+| Method | URL | Auth | Description |
+|--------|-----|------|-------------|
+| POST | /api/auth/register | — | Register new user |
+| POST | /api/auth/login | — | Login and get JWT token |
+| POST | /api/accounts | JWT | Create bank account |
+| GET | /api/accounts | JWT | Get my accounts |
+| POST | /api/accounts/transfer | JWT | Transfer funds |
+| POST | /api/accounts/{id}/deposit | JWT | Deposit funds |
