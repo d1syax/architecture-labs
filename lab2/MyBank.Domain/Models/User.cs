@@ -18,8 +18,7 @@ public class User
         FullName = fullName;
     }
 
-    public static (User? User, DomainError? Error) Create(
-        string email, string passwordHash, string fullName)
+    public static (User? User, DomainError? Error) Create(string email, string passwordHash, string fullName)
     {
         if (string.IsNullOrWhiteSpace(email) || !email.Contains('@'))
             return (null, DomainError.InvalidEmail());
