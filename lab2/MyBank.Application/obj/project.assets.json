@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "MyBank.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/MyBank.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyBank.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "MyBank.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MyBank.Domain/MyBank.Domain.csproj",
+      "msbuildProject": "../MyBank.Domain/MyBank.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "MyBank.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/mac/.nuget/packages/": {}
@@ -31,7 +50,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj": {
+              "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

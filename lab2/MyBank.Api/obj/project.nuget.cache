@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hbBEWLebGmM=",
+  "dgSpecHash": "Do2l6WxXv+k=",
   "success": true,
   "projectFilePath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/mac/.nuget/packages/bcrypt.net-next/4.1.0/bcrypt.net-next.4.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
