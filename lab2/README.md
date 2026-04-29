@@ -1,5 +1,5 @@
 # Лабораторна робота 2: Шарова архітектура та доменна модель
-*Done by: YOUR_NAME IM-XX*
+*Done by: IM-41 Boiko Danylo*
 
 ## Prerequisites
 - .NET 9 SDK
