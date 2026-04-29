@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Z5hrJCNWoJQ=",
+  "dgSpecHash": "hS85BXoQbE0=",
   "success": true,
   "projectFilePath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/MyBank.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/mac/.nuget/packages/bcrypt.net-next/4.1.0/bcrypt.net-next.4.1.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
-    "/Users/mac/.nuget/packages/coverlet.collector/6.0.2/coverlet.collector.6.0.2.nupkg.sha512",
     "/Users/mac/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/9.0.4/microsoft.aspnetcore.authentication.jwtbearer.9.0.4.nupkg.sha512",
     "/Users/mac/.nuget/packages/microsoft.aspnetcore.mvc.testing/9.0.4/microsoft.aspnetcore.mvc.testing.9.0.4.nupkg.sha512",
     "/Users/mac/.nuget/packages/microsoft.aspnetcore.testhost/9.0.4/microsoft.aspnetcore.testhost.9.0.4.nupkg.sha512",
@@ -69,13 +68,13 @@
     "/Users/mac/.nuget/packages/system.identitymodel.tokens.jwt/8.0.1/system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512",
     "/Users/mac/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512",
     "/Users/mac/.nuget/packages/system.text.json/8.0.5/system.text.json.8.0.5.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit/2.9.2/xunit.2.9.2.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit/2.9.3/xunit.2.9.3.nupkg.sha512",
     "/Users/mac/.nuget/packages/xunit.abstractions/2.0.3/xunit.abstractions.2.0.3.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit.analyzers/1.16.0/xunit.analyzers.1.16.0.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit.assert/2.9.2/xunit.assert.2.9.2.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit.core/2.9.2/xunit.core.2.9.2.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit.extensibility.core/2.9.2/xunit.extensibility.core.2.9.2.nupkg.sha512",
-    "/Users/mac/.nuget/packages/xunit.extensibility.execution/2.9.2/xunit.extensibility.execution.2.9.2.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit.analyzers/1.18.0/xunit.analyzers.1.18.0.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit.assert/2.9.3/xunit.assert.2.9.3.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit.core/2.9.3/xunit.core.2.9.3.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit.extensibility.core/2.9.3/xunit.extensibility.core.2.9.3.nupkg.sha512",
+    "/Users/mac/.nuget/packages/xunit.extensibility.execution/2.9.3/xunit.extensibility.execution.2.9.3.nupkg.sha512",
     "/Users/mac/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512"
   ],
   "logs": []

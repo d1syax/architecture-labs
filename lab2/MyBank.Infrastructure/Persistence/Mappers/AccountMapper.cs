@@ -5,11 +5,8 @@ namespace MyBank.Infrastructure.Persistence.Mappers;
 
 public static class AccountMapper
 {
-    public static Account ToDomain(AccountEntity entity)
-    {
-        var (account, _) = Account.Create(entity.UserId, entity.Currency);
-        return account!;
-    }
+    public static Account ToDomain(AccountEntity entity) =>
+        new Account(entity.AccountNumber, entity.Currency, entity.UserId);
 
     public static AccountEntity ToEntity(Account domain) => new()
     {

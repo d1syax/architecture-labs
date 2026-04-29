@@ -1,4 +1,5 @@
 using MyBank.Domain.Errors;
+using MyBank.Domain.Factories;
 using MyBank.Domain.Models;
 using MyBank.Domain.Repositories;
 
@@ -7,15 +8,18 @@ namespace MyBank.Application.Accounts;
 public class AccountService
 {
     private readonly IAccountRepository _accounts;
+    private readonly AccountFactory _accountFactory;
 
-    public AccountService(IAccountRepository accounts)
+    public AccountService(IAccountRepository accounts, AccountFactory accountFactory)
     {
         _accounts = accounts;
+        _accountFactory = accountFactory;
     }
 
-    public async Task<(Account? Account, DomainError? Error)> CreateAsync(int userId, string currency)
+    public async Task<(Account? Account, DomainError? Error)> CreateAsync(
+        int userId, string currency)
     {
-        var (account, error) = Account.Create(userId, currency);
+        var (account, error) = _accountFactory.Create(userId, currency);
         if (error != null) return (null, error);
 
         await _accounts.AddAsync(account!);
@@ -48,7 +52,7 @@ public class AccountService
         return null;
     }
 
-    public async Task<DomainError?> DepositAsync(int userId, int accountId, decimal amount)
+    public async Task<DomainError?> DepositAsync( int userId, int accountId, decimal amount)
     {
         var account = await _accounts.GetByIdAsync(accountId);
         if (account == null || account.UserId != userId)

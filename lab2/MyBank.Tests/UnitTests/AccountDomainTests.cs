@@ -1,56 +1,75 @@
-using MyBank.Application.Accounts;
 using MyBank.Domain.Factories;
-using MyBank.Domain.Models;
-using MyBank.Domain.Repositories;
-using NSubstitute;
+using Xunit;
 
 namespace MyBank.Tests.UnitTests;
 
-public class AccountServiceTests
+public class AccountDomainTests
 {
-    private readonly IAccountRepository _accounts = Substitute.For<IAccountRepository>();
     private readonly AccountFactory _factory = new();
-    private readonly AccountService _service;
-
-    public AccountServiceTests()
-    {
-        _service = new AccountService(_accounts, _factory);
-    }
 
     [Fact]
-    public async Task CreateAccount_ValidCurrency_ReturnsAccount()
+    public void CreateAccount_ValidCurrency_ReturnsAccount()
     {
-        var (account, error) = await _service.CreateAsync(1, "USD");
+        var (account, error) = _factory.Create(1, "USD");
 
         Assert.Null(error);
         Assert.NotNull(account);
         Assert.Equal("USD", account.Currency);
+        Assert.Equal(0, account.Balance);
     }
 
     [Fact]
-    public async Task CreateAccount_InvalidCurrency_ReturnsError()
+    public void CreateAccount_InvalidCurrency_ReturnsDomainError()
     {
-        var (account, error) = await _service.CreateAsync(1, "XYZ");
+        var (account, error) = _factory.Create(1, "XYZ");
 
         Assert.Null(account);
+        Assert.NotNull(error);
         Assert.Equal("INVALID_CURRENCY", error!.Code);
     }
 
     [Fact]
-    public async Task Transfer_AccountNotFound_ReturnsError()
+    public void Debit_SufficientFunds_UpdatesBalance()
     {
-        _accounts.GetByIdAsync(1).Returns((Account?)null);
+        var (account, _) = _factory.Create(1, "USD");
+        account!.Credit(1000);
 
-        var error = await _service.TransferAsync(1, 1, 2, 100);
+        var error = account.Debit(300);
 
-        Assert.Equal("ACCOUNT_NOT_FOUND", error!.Code);
+        Assert.Null(error);
+        Assert.Equal(700, account.Balance);
     }
 
     [Fact]
-    public async Task Transfer_SameAccount_ReturnsError()
+    public void Debit_InsufficientFunds_ReturnsDomainError()
     {
-        var error = await _service.TransferAsync(1, 1, 1, 100);
+        var (account, _) = _factory.Create(1, "USD");
+        account!.Credit(100);
 
-        Assert.Equal("SAME_ACCOUNT", error!.Code);
+        var error = account.Debit(500);
+
+        Assert.NotNull(error);
+        Assert.Equal("INSUFFICIENT_FUNDS", error!.Code);
+    }
+
+    [Fact]
+    public void Debit_NegativeAmount_ReturnsDomainError()
+    {
+        var (account, _) = _factory.Create(1, "USD");
+
+        var error = account!.Debit(-100);
+
+        Assert.NotNull(error);
+        Assert.Equal("INVALID_AMOUNT", error!.Code);
+    }
+
+    [Fact]
+    public void Credit_ValidAmount_UpdatesBalance()
+    {
+        var (account, _) = _factory.Create(1, "USD");
+
+        account!.Credit(500);
+
+        Assert.Equal(500, account.Balance);
     }
 }

@@ -3,6 +3,7 @@ using MyBank.Domain.Factories;
 using MyBank.Domain.Models;
 using MyBank.Domain.Repositories;
 using NSubstitute;
+using Xunit;
 
 namespace MyBank.Tests.UnitTests;
 
@@ -71,7 +72,8 @@ public class AuthServiceTests
         var user = new User("test@gmail.com", hash, "John Doe");
         _users.GetByEmailAsync("test@gmail.com").Returns(user);
 
-        var (token, error) = await _service.LoginAsync("test@gmail.com", "wrongpass");
+        var (token, error) = await _service.LoginAsync(
+            "test@gmail.com", "wrongpass");
 
         Assert.Null(token);
         Assert.Equal("INVALID_CREDENTIALS", error!.Code);

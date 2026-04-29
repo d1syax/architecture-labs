@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MyBank.Infrastructure.Persistence;
+using Xunit;
 
 namespace MyBank.Tests.IntegrationTests;
 

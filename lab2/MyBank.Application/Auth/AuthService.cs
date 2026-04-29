@@ -1,4 +1,5 @@
 using MyBank.Domain.Errors;
+using MyBank.Domain.Factories;
 using MyBank.Domain.Models;
 using MyBank.Domain.Repositories;
 
@@ -8,23 +9,18 @@ public class AuthService
 {
     private readonly IUserRepository _users;
     private readonly ITokenService _tokens;
+    private readonly UserFactory _userFactory;
 
-    public AuthService(IUserRepository users, ITokenService tokens)
+    public AuthService(IUserRepository users, ITokenService tokens, UserFactory userFactory)
     {
         _users = users;
         _tokens = tokens;
+        _userFactory = userFactory;
     }
 
     public async Task<(string? Token, DomainError? Error)> RegisterAsync(string email, string password, string fullName)
     {
-        if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
-            return (null, DomainError.WeakPassword());
-
-        if (await _users.ExistsByEmailAsync(email))
-            return (null, DomainError.EmailTaken());
-
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
-        var (user, error) = User.Create(email, passwordHash, fullName);
+        var (user, error) = await _userFactory.CreateAsync(email, password, fullName);
         if (error != null) return (null, error);
 
         await _users.AddAsync(user!);

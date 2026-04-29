@@ -1,5 +1,4 @@
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/.msCoverageSourceRootsMapping_MyBank.Tests
-/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/CoverletSourceRootsMapping_MyBank.Tests
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/MyBank.Api.deps.json
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/MyBank.Api.runtimeconfig.json
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/appsettings.Development.json
@@ -317,6 +316,7 @@
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/refs/System.Xml.XPath.XDocument.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/refs/WindowsBase.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/BCrypt.Net-Next.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Castle.Core.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Testing.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.AspNetCore.TestHost.dll
@@ -361,6 +361,7 @@
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.OpenApi.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.TestPlatform.CoreUtilities.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
@@ -372,6 +373,10 @@
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Newtonsoft.Json.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Npgsql.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/NSubstitute.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/System.Diagnostics.EventLog.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/bin/Debug/net9.0/xunit.abstractions.dll
