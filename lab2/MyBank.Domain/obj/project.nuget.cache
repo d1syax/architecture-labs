@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hg2E0mfDkis=",
+  "dgSpecHash": "cN2MUAeFU2g=",
   "success": true,
-  "projectFilePath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj",
+  "projectFilePath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj",
   "expectedPackageFiles": [
-    "/Users/mac/.nuget/packages/bcrypt.net-next/4.1.0/bcrypt.net-next.4.1.0.nupkg.sha512"
+    "C:\\Users\\boyak\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512"
   ],
   "logs": []
 }

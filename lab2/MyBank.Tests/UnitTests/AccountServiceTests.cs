@@ -55,4 +55,14 @@ public class AccountServiceTests
 
         Assert.Equal("SAME_ACCOUNT", error!.Code);
     }
+    
+    [Fact]
+    public async Task Deposit_AccountNotFound_ReturnsError()
+    {
+        _accounts.GetByIdAsync(999).Returns((Account?)null);
+
+        var error = await _service.DepositAsync(1, 999, 100);
+
+        Assert.Equal("ACCOUNT_NOT_FOUND", error!.Code);
+    }
 }

@@ -24,6 +24,7 @@ public class AuthService
         if (error != null) return (null, error);
 
         await _users.AddAsync(user!);
+        await _users.SaveChangesAsync();
         return (_tokens.Generate(user!), null);
     }
 

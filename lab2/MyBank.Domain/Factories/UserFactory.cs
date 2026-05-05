@@ -23,7 +23,7 @@ public class UserFactory
             return (null, DomainError.WeakPassword());
 
         if (string.IsNullOrWhiteSpace(fullName))
-            return (null, DomainError.InvalidEmail());
+            return (null, DomainError.InvalidFullName());
 
         if (await _users.ExistsByEmailAsync(email))
             return (null, DomainError.EmailTaken());

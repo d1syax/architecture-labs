@@ -1,5 +1,3 @@
-using MyBank.Domain.Errors;
-
 namespace MyBank.Domain.Models;
 
 public class User
@@ -14,6 +12,11 @@ public class User
         Email = email;
         PasswordHash = passwordHash;
         FullName = fullName;
+    }
+
+    internal static User Restore(int id, string email, string passwordHash, string fullName)
+    {
+        return new User(email, passwordHash, fullName) { Id = id };
     }
 
     public bool VerifyPassword(string password) =>

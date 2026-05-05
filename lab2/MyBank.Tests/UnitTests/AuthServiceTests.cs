@@ -58,8 +58,7 @@ public class AuthServiceTests
     [Fact]
     public async Task Register_WeakPassword_ReturnsError()
     {
-        var (token, error) = await _service.RegisterAsync(
-            "test@gmail.com", "123", "John Doe");
+        var (token, error) = await _service.RegisterAsync("test@gmail.com", "123", "John Doe");
 
         Assert.Null(token);
         Assert.Equal("WEAK_PASSWORD", error!.Code);
@@ -69,11 +68,11 @@ public class AuthServiceTests
     public async Task Login_WrongPassword_ReturnsError()
     {
         var hash = BCrypt.Net.BCrypt.HashPassword("correctpass");
-        var user = new User("test@gmail.com", hash, "John Doe");
+        var user = User.Restore(1, "test@gmail.com", hash, "John Doe");
+
         _users.GetByEmailAsync("test@gmail.com").Returns(user);
 
-        var (token, error) = await _service.LoginAsync(
-            "test@gmail.com", "wrongpass");
+        var (token, error) = await _service.LoginAsync("test@gmail.com", "wrongpass");
 
         Assert.Null(token);
         Assert.Equal("INVALID_CREDENTIALS", error!.Code);

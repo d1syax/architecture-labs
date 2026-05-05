@@ -24,6 +24,8 @@ public class UserRepository : IUserRepository
     {
         var entity = UserMapper.ToEntity(user);
         _db.Users.Add(entity);
-        await _db.SaveChangesAsync();
     }
+    
+    public async Task SaveChangesAsync() =>
+        await _db.SaveChangesAsync();
 }

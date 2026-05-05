@@ -18,6 +18,15 @@ public class Account
         Balance = 0;
     }
 
+    internal static Account Restore(int id, string accountNumber, decimal balance, string currency, int userId)
+    {
+        return new Account(accountNumber, currency, userId)
+        {
+            Id = id,
+            Balance = balance
+        };
+    }
+
     public DomainError? Debit(decimal amount)
     {
         if (amount <= 0) return DomainError.InvalidAmount();

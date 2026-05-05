@@ -37,4 +37,7 @@ public class DomainError
 
     public static DomainError SameAccount() =>
         new("SAME_ACCOUNT", "Cannot transfer to the same account");
+    
+    public static DomainError InvalidFullName() =>
+        new("INVALID_FULL_NAME", "Full name is required");
 }
