@@ -7,19 +7,19 @@ namespace MyBank.Domain.Factories;
 public class UserFactory
 {
     private readonly IUserRepository _users;
+    private readonly IPasswordHasher _hasher;
 
-    public UserFactory(IUserRepository users)
+    public UserFactory(IUserRepository users, IPasswordHasher hasher)
     {
         _users = users;
+        _hasher = hasher;
     }
 
-    public async Task<(User? User, DomainError? Error)> CreateAsync(string email, string password, string fullName)
+    public async Task<(User? User, DomainError? Error)> CreateAsync(
+        string email, string password, string fullName)
     {
         var (emailVO, emailError) = Email.Create(email);
         if (emailError != null) return (null, emailError);
-        
-        if (await _users.ExistsByEmailAsync(emailVO!.Value))
-            return (null, DomainError.EmailTaken());
 
         if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
             return (null, DomainError.WeakPassword());
@@ -27,10 +27,10 @@ public class UserFactory
         if (string.IsNullOrWhiteSpace(fullName))
             return (null, DomainError.InvalidFullName());
 
-        if (await _users.ExistsByEmailAsync(email))
+        if (await _users.ExistsByEmailAsync(emailVO!.Value))
             return (null, DomainError.EmailTaken());
 
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        var passwordHash = _hasher.Hash(password);
         var user = new User(emailVO, passwordHash, fullName);
         return (user, null);
     }

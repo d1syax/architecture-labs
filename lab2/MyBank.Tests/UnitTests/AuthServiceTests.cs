@@ -11,13 +11,14 @@ public class AuthServiceTests
 {
     private readonly IUserRepository _users = Substitute.For<IUserRepository>();
     private readonly ITokenService _tokens = Substitute.For<ITokenService>();
+    private readonly IPasswordHasher _hasher = Substitute.For<IPasswordHasher>();
     private readonly UserFactory _factory;
     private readonly AuthService _service;
 
     public AuthServiceTests()
     {
-        _factory = new UserFactory(_users);
-        _service = new AuthService(_users, _tokens, _factory);
+        _factory = new UserFactory(_users, _hasher);
+        _service = new AuthService(_users, _tokens, _factory, _hasher);
     }
 
     [Fact]
@@ -67,11 +68,10 @@ public class AuthServiceTests
     [Fact]
     public async Task Login_WrongPassword_ReturnsError()
     {
-        var hash = BCrypt.Net.BCrypt.HashPassword("correctpass");
         var (email, _) = Email.Create("test@gmail.com");
-        var user = User.Restore(1, email!, hash, "John Doe");
-
+        var user = User.Restore(1, email!, "hashed", "John Doe");
         _users.GetByEmailAsync("test@gmail.com").Returns(user);
+        _hasher.Verify("wrongpass", "hashed").Returns(false);
 
         var (token, error) = await _service.LoginAsync("test@gmail.com", "wrongpass");
 

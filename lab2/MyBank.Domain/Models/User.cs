@@ -13,14 +13,9 @@ public class User
         PasswordHash = passwordHash;
         FullName = fullName;
     }
-    
-    
 
     internal static User Restore(int id, Email email, string passwordHash, string fullName)
     {
         return new User(email, passwordHash, fullName) { Id = id };
     }
-
-    public bool VerifyPassword(string password) =>
-        BCrypt.Net.BCrypt.Verify(password, PasswordHash);
 }

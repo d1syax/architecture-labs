@@ -8,7 +8,8 @@ namespace MyBank.Tests.UnitTests;
 public class UserDomainTests
 {
     private readonly IUserRepository _users = Substitute.For<IUserRepository>();
-    private UserFactory CreateFactory() => new UserFactory(_users);
+    private readonly IPasswordHasher _hasher = Substitute.For<IPasswordHasher>();
+    private UserFactory CreateFactory() => new UserFactory(_users, _hasher);
 
     [Fact]
     public async Task CreateUser_ValidData_ReturnsUser()
@@ -60,27 +61,5 @@ public class UserDomainTests
 
         Assert.Null(user);
         Assert.Equal("EMAIL_TAKEN", error!.Code);
-    }
-
-    [Fact]
-    public async Task VerifyPassword_CorrectPassword_ReturnsTrue()
-    {
-        _users.ExistsByEmailAsync(Arg.Any<string>()).Returns(false);
-        var factory = CreateFactory();
-        var (user, _) = await factory.CreateAsync(
-            "test@gmail.com", "password123", "John Doe");
-
-        Assert.True(user!.VerifyPassword("password123"));
-    }
-
-    [Fact]
-    public async Task VerifyPassword_WrongPassword_ReturnsFalse()
-    {
-        _users.ExistsByEmailAsync(Arg.Any<string>()).Returns(false);
-        var factory = CreateFactory();
-        var (user, _) = await factory.CreateAsync(
-            "test@gmail.com", "password123", "John Doe");
-
-        Assert.False(user!.VerifyPassword("wrongpass"));
     }
 }

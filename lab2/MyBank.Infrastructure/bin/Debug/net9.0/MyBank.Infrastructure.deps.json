@@ -717,9 +717,6 @@
         }
       },
       "MyBank.Domain/1.0.0": {
-        "dependencies": {
-          "BCrypt.Net-Next": "4.1.0"
-        },
         "runtime": {
           "MyBank.Domain.dll": {
             "assemblyVersion": "1.0.0.0",

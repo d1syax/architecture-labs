@@ -24,6 +24,7 @@ builder.Services.AddScoped<UserFactory>();
 builder.Services.AddScoped<AccountFactory>();
 
 builder.Services.AddScoped<ITokenService, JwtTokenService>();
+builder.Services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<AccountService>();
