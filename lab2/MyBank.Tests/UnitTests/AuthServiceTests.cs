@@ -68,7 +68,8 @@ public class AuthServiceTests
     public async Task Login_WrongPassword_ReturnsError()
     {
         var hash = BCrypt.Net.BCrypt.HashPassword("correctpass");
-        var user = User.Restore(1, "test@gmail.com", hash, "John Doe");
+        var (email, _) = Email.Create("test@gmail.com");
+        var user = User.Restore(1, email!, hash, "John Doe");
 
         _users.GetByEmailAsync("test@gmail.com").Returns(user);
 

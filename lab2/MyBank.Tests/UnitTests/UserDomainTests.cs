@@ -21,7 +21,7 @@ public class UserDomainTests
 
         Assert.Null(error);
         Assert.NotNull(user);
-        Assert.Equal("test@gmail.com", user.Email);
+        Assert.Equal("test@gmail.com", user.Email.Value);
     }
 
     [Fact]

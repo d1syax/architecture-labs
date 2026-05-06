@@ -13,11 +13,13 @@ public class UserFactory
         _users = users;
     }
 
-    public async Task<(User? User, DomainError? Error)> CreateAsync(
-        string email, string password, string fullName)
+    public async Task<(User? User, DomainError? Error)> CreateAsync(string email, string password, string fullName)
     {
-        if (string.IsNullOrWhiteSpace(email) || !email.Contains('@'))
-            return (null, DomainError.InvalidEmail());
+        var (emailVO, emailError) = Email.Create(email);
+        if (emailError != null) return (null, emailError);
+        
+        if (await _users.ExistsByEmailAsync(emailVO!.Value))
+            return (null, DomainError.EmailTaken());
 
         if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
             return (null, DomainError.WeakPassword());
@@ -29,7 +31,7 @@ public class UserFactory
             return (null, DomainError.EmailTaken());
 
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
-        var user = new User(email, passwordHash, fullName);
+        var user = new User(emailVO, passwordHash, fullName);
         return (user, null);
     }
 }

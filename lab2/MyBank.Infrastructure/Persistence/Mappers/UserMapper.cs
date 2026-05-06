@@ -5,13 +5,16 @@ namespace MyBank.Infrastructure.Persistence.Mappers;
 
 public static class UserMapper
 {
-    public static User ToDomain(UserEntity entity) =>
-        User.Restore(entity.Id, entity.Email, entity.PasswordHash, entity.FullName);
+    public static User ToDomain(UserEntity entity)
+    {
+        var (email, _) = Email.Create(entity.Email);
+        return User.Restore(entity.Id, email!, entity.PasswordHash, entity.FullName);
+    }
 
     public static UserEntity ToEntity(User domain) => new()
     {
         Id = domain.Id,
-        Email = domain.Email,
+        Email = domain.Email.Value,
         PasswordHash = domain.PasswordHash,
         FullName = domain.FullName
     };
