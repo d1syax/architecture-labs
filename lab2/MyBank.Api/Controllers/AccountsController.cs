@@ -26,7 +26,7 @@ public class AccountsController : ControllerBase
         if (error != null) return BadRequest(new { error = error.Message });
 
         return StatusCode(201, new AccountResponse(
-            account!.Id, account.AccountNumber, account.Balance, account.Currency));
+            account!.Id, account.AccountNumber, account.Balance, account.Currency.Value));
     }
 
     [HttpGet]
@@ -34,7 +34,7 @@ public class AccountsController : ControllerBase
     {
         var accounts = await _accountService.GetUserAccountsAsync(GetUserId());
         return Ok(accounts.Select(a =>
-            new AccountResponse(a.Id, a.AccountNumber, a.Balance, a.Currency)));
+            new AccountResponse(a.Id, a.AccountNumber, a.Balance, a.Currency.Value)));
     }
 
     [HttpPost("transfer")]

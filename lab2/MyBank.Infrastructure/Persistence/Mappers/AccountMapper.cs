@@ -5,15 +5,19 @@ namespace MyBank.Infrastructure.Persistence.Mappers;
 
 public static class AccountMapper
 {
-    public static Account ToDomain(AccountEntity entity) =>
-        Account.Restore(entity.Id, entity.AccountNumber, entity.Balance, entity.Currency, entity.UserId);
+    public static Account ToDomain(AccountEntity entity)
+    {
+        var (currency, _) = Currency.Create(entity.Currency);
+        return Account.Restore(entity.Id, entity.AccountNumber,
+            entity.Balance, currency!, entity.UserId);
+    }
 
     public static AccountEntity ToEntity(Account domain) => new()
     {
         Id = domain.Id,
         AccountNumber = domain.AccountNumber,
         Balance = domain.Balance,
-        Currency = domain.Currency,
+        Currency = domain.Currency.Value,
         UserId = domain.UserId
     };
 }

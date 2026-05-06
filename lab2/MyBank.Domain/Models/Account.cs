@@ -7,10 +7,10 @@ public class Account
     public int Id { get; private set; }
     public string AccountNumber { get; private set; }
     public decimal Balance { get; private set; }
-    public string Currency { get; private set; }
+    public Currency Currency { get; private set; }
     public int UserId { get; private set; }
 
-    internal Account(string accountNumber, string currency, int userId)
+    internal Account(string accountNumber, Currency currency, int userId)
     {
         AccountNumber = accountNumber;
         Currency = currency;
@@ -18,7 +18,8 @@ public class Account
         Balance = 0;
     }
 
-    internal static Account Restore(int id, string accountNumber, decimal balance, string currency, int userId)
+    internal static Account Restore(int id, string accountNumber,
+        decimal balance, Currency currency, int userId)
     {
         return new Account(accountNumber, currency, userId)
         {

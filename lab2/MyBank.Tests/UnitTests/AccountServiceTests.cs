@@ -26,7 +26,7 @@ public class AccountServiceTests
 
         Assert.Null(error);
         Assert.NotNull(account);
-        Assert.Equal("USD", account.Currency);
+        Assert.Equal("USD", account.Currency.Value);
     }
 
     [Fact]
