@@ -1,6 +1,7 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MyBank.Application.Auth;
 using MyBank.Api.DTOs;
+using MyBank.Application.Auth.Commands;
 
 namespace MyBank.Api.Controllers;
 
@@ -8,15 +9,15 @@ namespace MyBank.Api.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
+    private readonly IMediator _mediator;
 
-    public AuthController(AuthService authService) => _authService = authService;
+    public AuthController(IMediator mediator) => _mediator = mediator;
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        var result = await _authService.RegisterAsync(
-            request.Email, request.Password, request.FullName);
+        var result = await _mediator.Send(
+            new RegisterCommand(request.Email, request.Password, request.FullName));
 
         if (result.IsFailure)
             return result.Error.Code == "EMAIL_TAKEN"
@@ -29,8 +30,8 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var result = await _authService.LoginAsync(
-            request.Email, request.Password);
+        var result = await _mediator.Send(
+            new LoginCommand(request.Email, request.Password));
 
         if (result.IsFailure)
             return Unauthorized(new { error = result.Error.Message });

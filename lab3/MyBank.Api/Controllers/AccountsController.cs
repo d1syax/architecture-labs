@@ -1,8 +1,10 @@
 using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyBank.Application.Accounts;
 using MyBank.Api.DTOs;
+using MyBank.Application.Accounts.Commands;
+using MyBank.Application.Accounts.Queries;
 
 namespace MyBank.Api.Controllers;
 
@@ -11,10 +13,9 @@ namespace MyBank.Api.Controllers;
 [Authorize]
 public class AccountsController : ControllerBase
 {
-    private readonly AccountService _accountService;
+    private readonly IMediator _mediator;
 
-    public AccountsController(AccountService accountService) =>
-        _accountService = accountService;
+    public AccountsController(IMediator mediator) => _mediator = mediator;
 
     private int GetUserId() =>
         int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
@@ -22,31 +23,31 @@ public class AccountsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAccount([FromBody] CreateAccountRequest request)
     {
-        var result = await _accountService.CreateAsync(GetUserId(), request.Currency);
+        var result = await _mediator.Send(
+            new CreateAccountCommand(GetUserId(), request.Currency));
 
         if (result.IsFailure)
             return BadRequest(new { error = result.Error.Message });
 
-        return StatusCode(201, new AccountResponse(
-            result.Value.Id,
-            result.Value.AccountNumber,
-            result.Value.Balance,
-            result.Value.Currency.Value));
+        return StatusCode(201, new { id = result.Value });
     }
 
     [HttpGet]
     public async Task<IActionResult> GetMyAccounts()
     {
-        var accounts = await _accountService.GetUserAccountsAsync(GetUserId());
-        return Ok(accounts.Select(a =>
-            new AccountResponse(a.Id, a.AccountNumber, a.Balance, a.Currency.Value)));
+        var accounts = await _mediator.Send(new GetMyAccountsQuery(GetUserId()));
+        return Ok(accounts);
     }
 
     [HttpPost("transfer")]
     public async Task<IActionResult> Transfer([FromBody] TransferRequest request)
     {
-        var result = await _accountService.TransferAsync(
-            GetUserId(), request.FromAccountId, request.ToAccountId, request.Amount);
+        var result = await _mediator.Send(
+            new TransferCommand(
+                GetUserId(),
+                request.FromAccountId,
+                request.ToAccountId,
+                request.Amount));
 
         if (result.IsFailure)
             return result.Error.Code == "ACCOUNT_NOT_FOUND"
@@ -60,8 +61,8 @@ public class AccountsController : ControllerBase
     public async Task<IActionResult> Deposit(
         int accountId, [FromBody] DepositRequest request)
     {
-        var result = await _accountService.DepositAsync(
-            GetUserId(), accountId, request.Amount);
+        var result = await _mediator.Send(
+            new DepositCommand(GetUserId(), accountId, request.Amount));
 
         if (result.IsFailure)
             return result.Error.Code == "ACCOUNT_NOT_FOUND"

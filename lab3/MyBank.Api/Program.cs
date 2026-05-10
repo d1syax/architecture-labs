@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using MyBank.Application.Auth;
-using MyBank.Application.Accounts;
-using MyBank.Domain.Repositories;
+using MyBank.Application.Accounts.Commands;
+using MyBank.Application.Accounts.Queries;
 using MyBank.Domain.Factories;
+using MyBank.Domain.Repositories;
 using MyBank.Infrastructure.Auth;
 using MyBank.Infrastructure.Persistence;
 using MyBank.Infrastructure.Persistence.Repositories;
+using MyBank.Application.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyBank API", Version = "v1" });
-
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Enter 'Bearer' and your token",
@@ -27,7 +27,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -44,17 +43,22 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(
+        typeof(CreateAccountCommand).Assembly));
+
 builder.Services.AddDbContext<BankDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountReadRepository, AccountReadRepository>();
+
 builder.Services.AddScoped<UserFactory>();
 builder.Services.AddScoped<AccountFactory>();
+
 builder.Services.AddScoped<ITokenService, JwtTokenService>();
 builder.Services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
-builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<AccountService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -78,7 +82,6 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

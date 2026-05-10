@@ -146,3 +146,7 @@
 /Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/obj/Debug/net9.0/MyBank.Api.pdb
 /Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/obj/Debug/net9.0/MyBank.Api.genruntimeconfig.cache
 /Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/obj/Debug/net9.0/ref/MyBank.Api.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/bin/Debug/net9.0/MediatR.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/bin/Debug/net9.0/MediatR.Contracts.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/bin/Debug/net9.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Api/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll
