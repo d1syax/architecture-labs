@@ -944,3 +944,4 @@ C:\Users\boyak\Documents\lab2\architecture-labs\lab2\mybank.tests\obj\Debug\net9
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\mybank.tests\obj\Debug\net9.0\MyBank.Tests.pdb
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\mybank.tests\obj\Debug\net9.0\MyBank.Tests.genruntimeconfig.cache
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\mybank.tests\obj\Debug\net9.0\ref\MyBank.Tests.dll
+C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Tests\bin\Debug\net9.0\CSharpFunctionalExtensions.dll

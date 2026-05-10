@@ -27,11 +27,11 @@ public class AuthServiceTests
         _users.ExistsByEmailAsync("test@gmail.com").Returns(false);
         _tokens.Generate(Arg.Any<User>()).Returns("jwt-token");
 
-        var (token, error) = await _service.RegisterAsync(
+        var result = await _service.RegisterAsync(
             "test@gmail.com", "password123", "John Doe");
 
-        Assert.Null(error);
-        Assert.Equal("jwt-token", token);
+        Assert.True(result.IsSuccess);
+        Assert.Equal("jwt-token", result.Value);
     }
 
     [Fact]
@@ -39,43 +39,44 @@ public class AuthServiceTests
     {
         _users.ExistsByEmailAsync("test@gmail.com").Returns(true);
 
-        var (token, error) = await _service.RegisterAsync(
+        var result = await _service.RegisterAsync(
             "test@gmail.com", "password123", "John Doe");
 
-        Assert.Null(token);
-        Assert.Equal("EMAIL_TAKEN", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("EMAIL_TAKEN", result.Error.Code);
     }
 
     [Fact]
     public async Task Register_InvalidEmail_ReturnsError()
     {
-        var (token, error) = await _service.RegisterAsync(
+        var result = await _service.RegisterAsync(
             "not-an-email", "password123", "John Doe");
 
-        Assert.Null(token);
-        Assert.Equal("INVALID_EMAIL", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_EMAIL", result.Error.Code);
     }
 
     [Fact]
     public async Task Register_WeakPassword_ReturnsError()
     {
-        var (token, error) = await _service.RegisterAsync("test@gmail.com", "123", "John Doe");
+        var result = await _service.RegisterAsync(
+            "test@gmail.com", "123", "John Doe");
 
-        Assert.Null(token);
-        Assert.Equal("WEAK_PASSWORD", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("WEAK_PASSWORD", result.Error.Code);
     }
 
     [Fact]
     public async Task Login_WrongPassword_ReturnsError()
     {
-        var (email, _) = Email.Create("test@gmail.com");
-        var user = User.Restore(1, email!, "hashed", "John Doe");
+        var emailResult = Email.Create("test@gmail.com");
+        var user = User.Restore(1, emailResult.Value, "hashed", "John Doe");
         _users.GetByEmailAsync("test@gmail.com").Returns(user);
         _hasher.Verify("wrongpass", "hashed").Returns(false);
 
-        var (token, error) = await _service.LoginAsync("test@gmail.com", "wrongpass");
+        var result = await _service.LoginAsync("test@gmail.com", "wrongpass");
 
-        Assert.Null(token);
-        Assert.Equal("INVALID_CREDENTIALS", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_CREDENTIALS", result.Error.Code);
     }
 }

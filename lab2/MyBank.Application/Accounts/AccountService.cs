@@ -1,3 +1,4 @@
+using CSharpFunctionalExtensions;
 using MyBank.Domain.Errors;
 using MyBank.Domain.Factories;
 using MyBank.Domain.Models;
@@ -16,52 +17,58 @@ public class AccountService
         _accountFactory = accountFactory;
     }
 
-    public async Task<(Account? Account, DomainError? Error)> CreateAsync(
-        int userId, string currency)
+    public async Task<Result<Account, DomainError>> CreateAsync(int userId, string currency)
     {
-        var (account, error) = _accountFactory.Create(userId, currency);
-        if (error != null) return (null, error);
+        var result = _accountFactory.Create(userId, currency);
+        if (result.IsFailure)
+            return Result.Failure<Account, DomainError>(result.Error);
 
-        await _accounts.AddAsync(account!);
+        await _accounts.AddAsync(result.Value);
         await _accounts.SaveChangesAsync();
-        return (account, null);
+        return Result.Success<Account, DomainError>(result.Value);
     }
 
     public async Task<List<Account>> GetUserAccountsAsync(int userId) =>
         await _accounts.GetByUserIdAsync(userId);
 
-    public async Task<DomainError?> TransferAsync(int userId, int fromId, int toId, decimal amount)
+    public async Task<UnitResult<DomainError>> TransferAsync(
+        int userId, int fromId, int toId, decimal amount)
     {
-        if (fromId == toId) return DomainError.SameAccount();
+        if (fromId == toId)
+            return UnitResult.Failure<DomainError>(DomainError.SameAccount());
 
         var from = await _accounts.GetByIdAsync(fromId);
         if (from == null || from.UserId != userId)
-            return DomainError.AccountNotFound();
+            return UnitResult.Failure<DomainError>(DomainError.AccountNotFound());
 
         var to = await _accounts.GetByIdAsync(toId);
-        if (to == null) return DomainError.AccountNotFound();
+        if (to == null)
+            return UnitResult.Failure<DomainError>(DomainError.AccountNotFound());
 
-        var debitError = from.Debit(amount);
-        if (debitError != null) return debitError;
+        var debitResult = from.Debit(amount);
+        if (debitResult.IsFailure)
+            return UnitResult.Failure<DomainError>(debitResult.Error);
 
         to.Credit(amount);
 
         await _accounts.AddTransactionAsync(
             Transaction.Create(fromId, toId, amount));
         await _accounts.SaveChangesAsync();
-        return null;
+        return UnitResult.Success<DomainError>();
     }
 
-    public async Task<DomainError?> DepositAsync( int userId, int accountId, decimal amount)
+    public async Task<UnitResult<DomainError>> DepositAsync(
+        int userId, int accountId, decimal amount)
     {
         var account = await _accounts.GetByIdAsync(accountId);
         if (account == null || account.UserId != userId)
-            return DomainError.AccountNotFound();
+            return UnitResult.Failure<DomainError>(DomainError.AccountNotFound());
 
-        var error = account.Credit(amount);
-        if (error != null) return error;
+        var creditResult = account.Credit(amount);
+        if (creditResult.IsFailure)
+            return UnitResult.Failure<DomainError>(creditResult.Error);
 
         await _accounts.SaveChangesAsync();
-        return null;
+        return UnitResult.Success<DomainError>();
     }
 }

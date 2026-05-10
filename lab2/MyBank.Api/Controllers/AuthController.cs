@@ -15,24 +15,26 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        var (token, error) = await _authService.RegisterAsync(
+        var result = await _authService.RegisterAsync(
             request.Email, request.Password, request.FullName);
 
-        if (error != null)
-            return error.Code == "EMAIL_TAKEN"
-                ? Conflict(new { error = error.Message })
-                : BadRequest(new { error = error.Message });
+        if (result.IsFailure)
+            return result.Error.Code == "EMAIL_TAKEN"
+                ? Conflict(new { error = result.Error.Message })
+                : BadRequest(new { error = result.Error.Message });
 
-        return StatusCode(201, new TokenResponse(token!));
+        return StatusCode(201, new TokenResponse(result.Value));
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var (token, error) = await _authService.LoginAsync(
+        var result = await _authService.LoginAsync(
             request.Email, request.Password);
 
-        if (error != null) return Unauthorized(new { error = error.Message });
-        return Ok(new TokenResponse(token!));
+        if (result.IsFailure)
+            return Unauthorized(new { error = result.Error.Message });
+
+        return Ok(new TokenResponse(result.Value));
     }
 }

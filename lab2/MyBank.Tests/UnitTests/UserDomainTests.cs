@@ -17,12 +17,11 @@ public class UserDomainTests
         _users.ExistsByEmailAsync("test@gmail.com").Returns(false);
         var factory = CreateFactory();
 
-        var (user, error) = await factory.CreateAsync(
+        var result = await factory.CreateAsync(
             "test@gmail.com", "password123", "John Doe");
 
-        Assert.Null(error);
-        Assert.NotNull(user);
-        Assert.Equal("test@gmail.com", user.Email.Value);
+        Assert.True(result.IsSuccess);
+        Assert.Equal("test@gmail.com", result.Value.Email.Value);
     }
 
     [Fact]
@@ -30,12 +29,11 @@ public class UserDomainTests
     {
         var factory = CreateFactory();
 
-        var (user, error) = await factory.CreateAsync(
+        var result = await factory.CreateAsync(
             "not-an-email", "password123", "John Doe");
 
-        Assert.Null(user);
-        Assert.NotNull(error);
-        Assert.Equal("INVALID_EMAIL", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_EMAIL", result.Error.Code);
     }
 
     [Fact]
@@ -43,11 +41,11 @@ public class UserDomainTests
     {
         var factory = CreateFactory();
 
-        var (user, error) = await factory.CreateAsync(
+        var result = await factory.CreateAsync(
             "test@gmail.com", "123", "John Doe");
 
-        Assert.Null(user);
-        Assert.Equal("WEAK_PASSWORD", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("WEAK_PASSWORD", result.Error.Code);
     }
 
     [Fact]
@@ -56,10 +54,10 @@ public class UserDomainTests
         _users.ExistsByEmailAsync("test@gmail.com").Returns(true);
         var factory = CreateFactory();
 
-        var (user, error) = await factory.CreateAsync(
+        var result = await factory.CreateAsync(
             "test@gmail.com", "password123", "John Doe");
 
-        Assert.Null(user);
-        Assert.Equal("EMAIL_TAKEN", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("EMAIL_TAKEN", result.Error.Code);
     }
 }

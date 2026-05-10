@@ -5,7 +5,6 @@ using MyBank.Domain.Repositories;
 using NSubstitute;
 using Xunit;
 
-
 namespace MyBank.Tests.UnitTests;
 
 public class AccountServiceTests
@@ -22,20 +21,19 @@ public class AccountServiceTests
     [Fact]
     public async Task CreateAccount_ValidCurrency_ReturnsAccount()
     {
-        var (account, error) = await _service.CreateAsync(1, "USD");
+        var result = await _service.CreateAsync(1, "USD");
 
-        Assert.Null(error);
-        Assert.NotNull(account);
-        Assert.Equal("USD", account.Currency.Value);
+        Assert.True(result.IsSuccess);
+        Assert.Equal("USD", result.Value.Currency.Value);
     }
 
     [Fact]
     public async Task CreateAccount_InvalidCurrency_ReturnsError()
     {
-        var (account, error) = await _service.CreateAsync(1, "XYZ");
+        var result = await _service.CreateAsync(1, "XYZ");
 
-        Assert.Null(account);
-        Assert.Equal("INVALID_CURRENCY", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_CURRENCY", result.Error.Code);
     }
 
     [Fact]
@@ -43,26 +41,29 @@ public class AccountServiceTests
     {
         _accounts.GetByIdAsync(1).Returns((Account?)null);
 
-        var error = await _service.TransferAsync(1, 1, 2, 100);
+        var result = await _service.TransferAsync(1, 1, 2, 100);
 
-        Assert.Equal("ACCOUNT_NOT_FOUND", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("ACCOUNT_NOT_FOUND", result.Error.Code);
     }
 
     [Fact]
     public async Task Transfer_SameAccount_ReturnsError()
     {
-        var error = await _service.TransferAsync(1, 1, 1, 100);
+        var result = await _service.TransferAsync(1, 1, 1, 100);
 
-        Assert.Equal("SAME_ACCOUNT", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("SAME_ACCOUNT", result.Error.Code);
     }
-    
+
     [Fact]
     public async Task Deposit_AccountNotFound_ReturnsError()
     {
         _accounts.GetByIdAsync(999).Returns((Account?)null);
 
-        var error = await _service.DepositAsync(1, 999, 100);
+        var result = await _service.DepositAsync(1, 999, 100);
 
-        Assert.Equal("ACCOUNT_NOT_FOUND", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("ACCOUNT_NOT_FOUND", result.Error.Code);
     }
 }

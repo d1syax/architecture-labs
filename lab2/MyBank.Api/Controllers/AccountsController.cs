@@ -22,11 +22,16 @@ public class AccountsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAccount([FromBody] CreateAccountRequest request)
     {
-        var (account, error) = await _accountService.CreateAsync(GetUserId(), request.Currency);
-        if (error != null) return BadRequest(new { error = error.Message });
+        var result = await _accountService.CreateAsync(GetUserId(), request.Currency);
+
+        if (result.IsFailure)
+            return BadRequest(new { error = result.Error.Message });
 
         return StatusCode(201, new AccountResponse(
-            account!.Id, account.AccountNumber, account.Balance, account.Currency.Value));
+            result.Value.Id,
+            result.Value.AccountNumber,
+            result.Value.Balance,
+            result.Value.Currency.Value));
     }
 
     [HttpGet]
@@ -40,26 +45,28 @@ public class AccountsController : ControllerBase
     [HttpPost("transfer")]
     public async Task<IActionResult> Transfer([FromBody] TransferRequest request)
     {
-        var error = await _accountService.TransferAsync(
+        var result = await _accountService.TransferAsync(
             GetUserId(), request.FromAccountId, request.ToAccountId, request.Amount);
 
-        if (error != null)
-            return error.Code == "ACCOUNT_NOT_FOUND"
-                ? NotFound(new { error = error.Message })
-                : BadRequest(new { error = error.Message });
+        if (result.IsFailure)
+            return result.Error.Code == "ACCOUNT_NOT_FOUND"
+                ? NotFound(new { error = result.Error.Message })
+                : BadRequest(new { error = result.Error.Message });
 
         return Ok(new { message = "Transfer successful" });
     }
 
     [HttpPost("{accountId}/deposit")]
-    public async Task<IActionResult> Deposit(int accountId, [FromBody] DepositRequest request)
+    public async Task<IActionResult> Deposit(
+        int accountId, [FromBody] DepositRequest request)
     {
-        var error = await _accountService.DepositAsync(GetUserId(), accountId, request.Amount);
+        var result = await _accountService.DepositAsync(
+            GetUserId(), accountId, request.Amount);
 
-        if (error != null)
-            return error.Code == "ACCOUNT_NOT_FOUND"
-                ? NotFound(new { error = error.Message })
-                : BadRequest(new { error = error.Message });
+        if (result.IsFailure)
+            return result.Error.Code == "ACCOUNT_NOT_FOUND"
+                ? NotFound(new { error = result.Error.Message })
+                : BadRequest(new { error = result.Error.Message });
 
         return Ok(new { message = "Deposit successful" });
     }

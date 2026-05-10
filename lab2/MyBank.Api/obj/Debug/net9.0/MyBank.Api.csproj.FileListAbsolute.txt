@@ -293,3 +293,4 @@ C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Api\obj\Debug\net9.0
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Api\obj\Debug\net9.0\MyBank.Api.pdb
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Api\obj\Debug\net9.0\MyBank.Api.genruntimeconfig.cache
 C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Api\obj\Debug\net9.0\ref\MyBank.Api.dll
+C:\Users\boyak\Documents\lab2\architecture-labs\lab2\MyBank.Api\bin\Debug\net9.0\CSharpFunctionalExtensions.dll

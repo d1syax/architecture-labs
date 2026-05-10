@@ -1,36 +1,42 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/MyBank.Tests.csproj": {}
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Tests\\MyBank.Tests.csproj": {}
   },
   "projects": {
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj": {
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\MyBank.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj",
+        "projectUniqueName": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\MyBank.Api.csproj",
         "projectName": "MyBank.Api",
-        "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj",
-        "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/obj/",
+        "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\MyBank.Api.csproj",
+        "packagesPath": "C:\\Users\\boyak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\boyak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj"
               },
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj"
               }
             }
           }
@@ -45,7 +51,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -85,34 +91,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj": {
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj",
+        "projectUniqueName": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj",
         "projectName": "MyBank.Application",
-        "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj",
-        "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/obj/",
+        "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj",
+        "packagesPath": "C:\\Users\\boyak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\boyak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj"
               }
             }
           }
@@ -127,7 +139,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -148,26 +160,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj": {
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj",
         "projectName": "MyBank.Domain",
-        "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj",
-        "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/obj/",
+        "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj",
+        "packagesPath": "C:\\Users\\boyak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\boyak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -186,11 +204,17 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "CSharpFunctionalExtensions": {
+              "target": "Package",
+              "version": "[3.7.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -207,37 +231,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj": {
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj",
         "projectName": "MyBank.Infrastructure",
-        "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj",
-        "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/obj/",
+        "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\boyak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\boyak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj"
               },
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj"
               }
             }
           }
@@ -252,7 +282,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -297,43 +327,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/MyBank.Tests.csproj": {
+    "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Tests\\MyBank.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/MyBank.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Tests\\MyBank.Tests.csproj",
         "projectName": "MyBank.Tests",
-        "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/MyBank.Tests.csproj",
-        "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Tests/obj/",
+        "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Tests\\MyBank.Tests.csproj",
+        "packagesPath": "C:\\Users\\boyak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mac/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\boyak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Api/MyBank.Api.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\MyBank.Api.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Api\\MyBank.Api.csproj"
               },
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj"
               },
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Domain/MyBank.Domain.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Domain\\MyBank.Domain.csproj"
               },
-              "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj": {
-                "projectPath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Infrastructure/MyBank.Infrastructure.csproj"
+              "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Infrastructure\\MyBank.Infrastructure.csproj"
               }
             }
           }
@@ -348,7 +384,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -397,7 +433,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

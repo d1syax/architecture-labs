@@ -10,65 +10,63 @@ public class AccountDomainTests
     [Fact]
     public void CreateAccount_ValidCurrency_ReturnsAccount()
     {
-        var (account, error) = _factory.Create(1, "USD");
+        var result = _factory.Create(1, "USD");
 
-        Assert.Null(error);
-        Assert.NotNull(account);
-        Assert.Equal("USD", account.Currency.Value);
-        Assert.Equal(0, account.Balance);
+        Assert.True(result.IsSuccess);
+        Assert.Equal("USD", result.Value.Currency.Value);
+        Assert.Equal(0, result.Value.Balance);
     }
 
     [Fact]
     public void CreateAccount_InvalidCurrency_ReturnsDomainError()
     {
-        var (account, error) = _factory.Create(1, "XYZ");
+        var result = _factory.Create(1, "XYZ");
 
-        Assert.Null(account);
-        Assert.NotNull(error);
-        Assert.Equal("INVALID_CURRENCY", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_CURRENCY", result.Error.Code);
     }
 
     [Fact]
     public void Debit_SufficientFunds_UpdatesBalance()
     {
-        var (account, _) = _factory.Create(1, "USD");
-        account!.Credit(1000);
+        var account = _factory.Create(1, "USD").Value;
+        account.Credit(1000);
 
-        var error = account.Debit(300);
+        var result = account.Debit(300);
 
-        Assert.Null(error);
+        Assert.True(result.IsSuccess);
         Assert.Equal(700, account.Balance);
     }
 
     [Fact]
     public void Debit_InsufficientFunds_ReturnsDomainError()
     {
-        var (account, _) = _factory.Create(1, "USD");
-        account!.Credit(100);
+        var account = _factory.Create(1, "USD").Value;
+        account.Credit(100);
 
-        var error = account.Debit(500);
+        var result = account.Debit(500);
 
-        Assert.NotNull(error);
-        Assert.Equal("INSUFFICIENT_FUNDS", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INSUFFICIENT_FUNDS", result.Error.Code);
     }
 
     [Fact]
     public void Debit_NegativeAmount_ReturnsDomainError()
     {
-        var (account, _) = _factory.Create(1, "USD");
+        var account = _factory.Create(1, "USD").Value;
 
-        var error = account!.Debit(-100);
+        var result = account.Debit(-100);
 
-        Assert.NotNull(error);
-        Assert.Equal("INVALID_AMOUNT", error!.Code);
+        Assert.True(result.IsFailure);
+        Assert.Equal("INVALID_AMOUNT", result.Error.Code);
     }
 
     [Fact]
     public void Credit_ValidAmount_UpdatesBalance()
     {
-        var (account, _) = _factory.Create(1, "USD");
+        var account = _factory.Create(1, "USD").Value;
 
-        account!.Credit(500);
+        account.Credit(500);
 
         Assert.Equal(500, account.Balance);
     }

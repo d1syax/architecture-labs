@@ -1,3 +1,4 @@
+using CSharpFunctionalExtensions;
 using MyBank.Domain.Errors;
 using MyBank.Domain.Factories;
 using MyBank.Domain.Models;
@@ -12,7 +13,8 @@ public class AuthService
     private readonly UserFactory _userFactory;
     private readonly IPasswordHasher _hasher;
 
-    public AuthService(IUserRepository users, ITokenService tokens, UserFactory userFactory, IPasswordHasher hasher)
+    public AuthService(IUserRepository users, ITokenService tokens,
+        UserFactory userFactory, IPasswordHasher hasher)
     {
         _users = users;
         _tokens = tokens;
@@ -20,22 +22,25 @@ public class AuthService
         _hasher = hasher;
     }
 
-    public async Task<(string? Token, DomainError? Error)> RegisterAsync(string email, string password, string fullName)
+    public async Task<Result<string, DomainError>> RegisterAsync(
+        string email, string password, string fullName)
     {
-        var (user, error) = await _userFactory.CreateAsync(email, password, fullName);
-        if (error != null) return (null, error);
+        var result = await _userFactory.CreateAsync(email, password, fullName);
+        if (result.IsFailure)
+            return Result.Failure<string, DomainError>(result.Error);
 
-        await _users.AddAsync(user!);
+        await _users.AddAsync(result.Value);
         await _users.SaveChangesAsync();
-        return (_tokens.Generate(user!), null);
+        return Result.Success<string, DomainError>(_tokens.Generate(result.Value));
     }
 
-    public async Task<(string? Token, DomainError? Error)> LoginAsync(string email, string password)
+    public async Task<Result<string, DomainError>> LoginAsync(
+        string email, string password)
     {
         var user = await _users.GetByEmailAsync(email);
         if (user == null || !_hasher.Verify(password, user.PasswordHash))
-            return (null, DomainError.InvalidCredentials());
+            return Result.Failure<string, DomainError>(DomainError.InvalidCredentials());
 
-        return (_tokens.Generate(user), null);
+        return Result.Success<string, DomainError>(_tokens.Generate(user));
     }
 }

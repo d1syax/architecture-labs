@@ -1,10 +1,10 @@
+using CSharpFunctionalExtensions;
 using MyBank.Domain.Errors;
 
 namespace MyBank.Domain.Models;
 
-public class Account
+public class Account : Entity<int>
 {
-    public int Id { get; private set; }
     public string AccountNumber { get; private set; }
     public decimal Balance { get; private set; }
     public Currency Currency { get; private set; }
@@ -28,18 +28,23 @@ public class Account
         };
     }
 
-    public DomainError? Debit(decimal amount)
+    public UnitResult<DomainError> Debit(decimal amount)
     {
-        if (amount <= 0) return DomainError.InvalidAmount();
-        if (Balance < amount) return DomainError.InsufficientFunds();
+        if (amount <= 0)
+            return UnitResult.Failure<DomainError>(DomainError.InvalidAmount());
+        if (Balance < amount)
+            return UnitResult.Failure<DomainError>(DomainError.InsufficientFunds());
+
         Balance -= amount;
-        return null;
+        return UnitResult.Success<DomainError>();
     }
 
-    public DomainError? Credit(decimal amount)
+    public UnitResult<DomainError> Credit(decimal amount)
     {
-        if (amount <= 0) return DomainError.InvalidAmount();
+        if (amount <= 0)
+            return UnitResult.Failure<DomainError>(DomainError.InvalidAmount());
+
         Balance += amount;
-        return null;
+        return UnitResult.Success<DomainError>();
     }
 }

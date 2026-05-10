@@ -1,21 +1,27 @@
+using CSharpFunctionalExtensions;
 using MyBank.Domain.Errors;
 
 namespace MyBank.Domain.Models;
 
-public record Currency
+public class Currency : ValueObject
 {
     private static readonly string[] Allowed = ["USD", "UAH", "EUR"];
     public string Value { get; }
 
     private Currency(string value) => Value = value;
 
-    public static (Currency? Currency, DomainError? Error) Create(string value)
+    public static Result<Currency, DomainError> Create(string value)
     {
         if (string.IsNullOrWhiteSpace(value) ||
             !Allowed.Contains(value.ToUpper()))
-            return (null, DomainError.InvalidCurrency(value));
+            return Result.Failure<Currency, DomainError>(DomainError.InvalidCurrency(value));
 
-        return (new Currency(value.ToUpper()), null);
+        return Result.Success<Currency, DomainError>(new Currency(value.ToUpper()));
+    }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
     }
 
     public override string ToString() => Value;

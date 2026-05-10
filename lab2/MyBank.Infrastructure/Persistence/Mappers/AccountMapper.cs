@@ -7,9 +7,9 @@ public static class AccountMapper
 {
     public static Account ToDomain(AccountEntity entity)
     {
-        var (currency, _) = Currency.Create(entity.Currency);
+        var currencyResult = Currency.Create(entity.Currency);
         return Account.Restore(entity.Id, entity.AccountNumber,
-            entity.Balance, currency!, entity.UserId);
+            entity.Balance, currencyResult.Value, entity.UserId);
     }
 
     public static AccountEntity ToEntity(Account domain) => new()

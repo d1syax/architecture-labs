@@ -7,8 +7,9 @@ public static class UserMapper
 {
     public static User ToDomain(UserEntity entity)
     {
-        var (email, _) = Email.Create(entity.Email);
-        return User.Restore(entity.Id, email!, entity.PasswordHash, entity.FullName);
+        var emailResult = Email.Create(entity.Email);
+        return User.Restore(entity.Id, emailResult.Value,
+            entity.PasswordHash, entity.FullName);
     }
 
     public static UserEntity ToEntity(User domain) => new()

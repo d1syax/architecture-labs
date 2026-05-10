@@ -382,6 +382,17 @@
           "lib/net6.0/Castle.Core.dll": {}
         }
       },
+      "CSharpFunctionalExtensions/3.7.0": {
+        "runtime": {
+          "lib/net8.0/CSharpFunctionalExtensions.dll": {
+            "assemblyVersion": "3.7.0.0",
+            "fileVersion": "3.7.0.0"
+          }
+        },
+        "compile": {
+          "lib/net8.0/CSharpFunctionalExtensions.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
@@ -1366,12 +1377,6 @@
           }
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.Messages.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.425.16305"
-          },
           "runtimes/win/lib/net9.0/System.Diagnostics.EventLog.dll": {
             "rid": "win",
             "assetType": "runtime",
@@ -1408,7 +1413,7 @@
         "runtime": {
           "lib/netstandard2.0/xunit.abstractions.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "2.0.0.0"
           }
         },
         "compile": {
@@ -1494,6 +1499,9 @@
         }
       },
       "MyBank.Domain/1.0.0": {
+        "dependencies": {
+          "CSharpFunctionalExtensions": "3.7.0"
+        },
         "runtime": {
           "MyBank.Domain.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -3356,6 +3364,13 @@
       "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
       "path": "castle.core/5.1.1",
       "hashPath": "castle.core.5.1.1.nupkg.sha512"
+    },
+    "CSharpFunctionalExtensions/3.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eMZp8tc88O96eEFutiIskF3LE8lFY3fjbNRGfNa1ca0CD9sB8A00r5ltyYDih/7UFdJdVbhVq7tGeHI8xj6DlQ==",
+      "path": "csharpfunctionalextensions/3.7.0",
+      "hashPath": "csharpfunctionalextensions.3.7.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.4": {
       "type": "package",

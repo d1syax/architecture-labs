@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "34RA63u57pY=",
+  "dgSpecHash": "kWyhSQjSfwQ=",
   "success": true,
-  "projectFilePath": "/Users/mac/RiderProjects/architecture-labs/lab2/MyBank.Application/MyBank.Application.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\boyak\\Documents\\lab2\\architecture-labs\\lab2\\MyBank.Application\\MyBank.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\boyak\\.nuget\\packages\\csharpfunctionalextensions\\3.7.0\\csharpfunctionalextensions.3.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
