@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "dZC2nbc0umk=",
+  "success": true,
+  "projectFilePath": "/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/MyBank.Domain.csproj",
+  "expectedPackageFiles": [
+    "/Users/mac/.nuget/packages/csharpfunctionalextensions/3.7.0/csharpfunctionalextensions.3.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

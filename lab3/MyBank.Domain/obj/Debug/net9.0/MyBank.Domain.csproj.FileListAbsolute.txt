@@ -1,0 +1,13 @@
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/bin/Debug/net9.0/MyBank.Domain.deps.json
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/bin/Debug/net9.0/MyBank.Domain.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/bin/Debug/net9.0/MyBank.Domain.pdb
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.csproj.AssemblyReference.cache
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.AssemblyInfoInputs.cache
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.AssemblyInfo.cs
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.csproj.CoreCompileInputs.cache
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.sourcelink.json
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/refint/MyBank.Domain.dll
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/MyBank.Domain.pdb
+/Users/mac/RiderProjects/architecture-labs/lab3/MyBank.Domain/obj/Debug/net9.0/ref/MyBank.Domain.dll

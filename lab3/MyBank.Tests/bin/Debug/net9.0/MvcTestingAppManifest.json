@@ -1,0 +1,6 @@
+{
+  "MyBank.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/mac\/RiderProjects\/architecture-labs\/lab3\/MyBank.Api",
+  "MyBank.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/mac\/RiderProjects\/architecture-labs\/lab3\/MyBank.Application",
+  "MyBank.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/mac\/RiderProjects\/architecture-labs\/lab3\/MyBank.Domain",
+  "MyBank.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/mac\/RiderProjects\/architecture-labs\/lab3\/MyBank.Infrastructure"
+}

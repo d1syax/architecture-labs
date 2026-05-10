@@ -1,0 +1,11 @@
+namespace MyBank.Infrastructure.Persistence.Entities;
+
+public class AccountEntity
+{
+    public int Id { get; set; }
+    public string AccountNumber { get; set; } = string.Empty;
+    public decimal Balance { get; set; }
+    public string Currency { get; set; } = string.Empty;
+    public int UserId { get; set; }
+    public UserEntity User { get; set; } = null!;
+}
