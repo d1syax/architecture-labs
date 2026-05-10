@@ -17,5 +17,8 @@ public class BankDbContext : DbContext
         modelBuilder.Entity<AccountEntity>().HasIndex(a => a.AccountNumber).IsUnique();
         modelBuilder.Entity<AccountEntity>().Property(a => a.Balance).HasPrecision(18, 2);
         modelBuilder.Entity<TransactionEntity>().Property(t => t.Amount).HasPrecision(18, 2);
+        
+        modelBuilder.Entity<AccountEntity>().Property(a => a.Id).ValueGeneratedOnAdd();
+        modelBuilder.Entity<UserEntity>().Property(u => u.Id).ValueGeneratedOnAdd();
     }
 }

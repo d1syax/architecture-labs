@@ -23,8 +23,7 @@ public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand,
         if (result.IsFailure)
             return Result.Failure<int, DomainError>(result.Error);
 
-        await _accounts.AddAsync(result.Value);
-        await _accounts.SaveChangesAsync();
-        return Result.Success<int, DomainError>(result.Value.Id);
+        var id = await _accounts.AddAsync(result.Value);
+        return Result.Success<int, DomainError>(id);
     }
 }

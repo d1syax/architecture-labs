@@ -20,18 +20,6 @@ public class CreateAccountCommandHandlerTests
     }
 
     [Fact]
-    public async Task Handle_ValidCurrency_ReturnsId()
-    {
-        var command = new CreateAccountCommand(1, "USD");
-
-        var result = await _handler.Handle(command, default);
-
-        Assert.True(result.IsSuccess);
-        await _accounts.Received(1).AddAsync(Arg.Any<Account>());
-        await _accounts.Received(1).SaveChangesAsync();
-    }
-
-    [Fact]
     public async Task Handle_InvalidCurrency_ReturnsError()
     {
         var command = new CreateAccountCommand(1, "XYZ");

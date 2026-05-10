@@ -14,7 +14,6 @@ public static class AccountMapper
 
     public static AccountEntity ToEntity(Account domain) => new()
     {
-        Id = domain.Id,
         AccountNumber = domain.AccountNumber,
         Balance = domain.Balance,
         Currency = domain.Currency.Value,

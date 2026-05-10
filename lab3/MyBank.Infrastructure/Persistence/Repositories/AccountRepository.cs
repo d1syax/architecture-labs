@@ -24,10 +24,12 @@ public class AccountRepository : IAccountRepository
             .Select(e => AccountMapper.ToDomain(e))
             .ToListAsync();
 
-    public async Task AddAsync(Account account)
+    public async Task<int> AddAsync(Account account)
     {
         var entity = AccountMapper.ToEntity(account);
         _db.Accounts.Add(entity);
+        await _db.SaveChangesAsync();
+        return entity.Id;
     }
 
     public async Task AddTransactionAsync(Transaction transaction)
