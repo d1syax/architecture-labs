@@ -15,8 +15,7 @@ public class User : Entity<int>
         FullName = fullName;
     }
 
-    internal static User Restore(int id, Email email,
-        string passwordHash, string fullName)
+    internal static User Restore(int id, Email email, string passwordHash, string fullName)
     {
         return new User(email, passwordHash, fullName) { Id = id };
     }

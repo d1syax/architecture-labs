@@ -3,7 +3,7 @@ using MyBank.Application.ReadModels;
 
 namespace MyBank.Application.Accounts.Queries;
 
-public class GetMyAccountsQueryHandler : IRequestHandler<GetMyAccountsQuery, List<AccountReadModel>>
+public class xGetMyAccountsQueryHandler : IRequestHandler<GetMyAccountsQuery, List<AccountReadModel>>
 {
     private readonly IAccountReadRepository _readRepository;
 

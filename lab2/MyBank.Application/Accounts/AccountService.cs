@@ -31,8 +31,7 @@ public class AccountService
     public async Task<List<Account>> GetUserAccountsAsync(int userId) =>
         await _accounts.GetByUserIdAsync(userId);
 
-    public async Task<UnitResult<DomainError>> TransferAsync(
-        int userId, int fromId, int toId, decimal amount)
+    public async Task<UnitResult<DomainError>> TransferAsync(int userId, int fromId, int toId, decimal amount)
     {
         if (fromId == toId)
             return UnitResult.Failure<DomainError>(DomainError.SameAccount());
@@ -51,14 +50,12 @@ public class AccountService
 
         to.Credit(amount);
 
-        await _accounts.AddTransactionAsync(
-            Transaction.Create(fromId, toId, amount));
+        await _accounts.AddTransactionAsync(Transaction.Create(fromId, toId, amount));
         await _accounts.SaveChangesAsync();
         return UnitResult.Success<DomainError>();
     }
 
-    public async Task<UnitResult<DomainError>> DepositAsync(
-        int userId, int accountId, decimal amount)
+    public async Task<UnitResult<DomainError>> DepositAsync(int userId, int accountId, decimal amount)
     {
         var account = await _accounts.GetByIdAsync(accountId);
         if (account == null || account.UserId != userId)

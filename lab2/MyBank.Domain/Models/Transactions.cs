@@ -10,8 +10,7 @@ public class Transaction
 
     private Transaction() { }
 
-    public static Transaction Create(int fromAccountId, int toAccountId, decimal amount) =>
-        new ()
+    public static Transaction Create(int fromAccountId, int toAccountId, decimal amount) => new Transaction
         {
             FromAccountId = fromAccountId,
             ToAccountId = toAccountId,

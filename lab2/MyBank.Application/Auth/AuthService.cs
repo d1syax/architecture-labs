@@ -13,8 +13,7 @@ public class AuthService
     private readonly UserFactory _userFactory;
     private readonly IPasswordHasher _hasher;
 
-    public AuthService(IUserRepository users, ITokenService tokens,
-        UserFactory userFactory, IPasswordHasher hasher)
+    public AuthService(IUserRepository users, ITokenService tokens, UserFactory userFactory, IPasswordHasher hasher)
     {
         _users = users;
         _tokens = tokens;
@@ -22,8 +21,7 @@ public class AuthService
         _hasher = hasher;
     }
 
-    public async Task<Result<string, DomainError>> RegisterAsync(
-        string email, string password, string fullName)
+    public async Task<Result<string, DomainError>> RegisterAsync(string email, string password, string fullName)
     {
         var result = await _userFactory.CreateAsync(email, password, fullName);
         if (result.IsFailure)
@@ -34,8 +32,7 @@ public class AuthService
         return Result.Success<string, DomainError>(_tokens.Generate(result.Value));
     }
 
-    public async Task<Result<string, DomainError>> LoginAsync(
-        string email, string password)
+    public async Task<Result<string, DomainError>> LoginAsync(string email, string password)
     {
         var user = await _users.GetByEmailAsync(email);
         if (user == null || !_hasher.Verify(password, user.PasswordHash))

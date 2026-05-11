@@ -16,8 +16,7 @@ public class UserFactory
         _hasher = hasher;
     }
 
-    public async Task<Result<User, DomainError>> CreateAsync(
-        string email, string password, string fullName)
+    public async Task<Result<User, DomainError>> CreateAsync(string email, string password, string fullName)
     {
         var emailResult = Email.Create(email);
         if (emailResult.IsFailure)

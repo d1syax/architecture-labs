@@ -17,8 +17,8 @@ public class AccountsController : ControllerBase
 
     public AccountsController(IMediator mediator) => _mediator = mediator;
 
-    private int GetUserId() =>
-        int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        private int GetUserId() =>
+            int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
     [HttpPost]
     public async Task<IActionResult> CreateAccount([FromBody] CreateAccountRequest request)
@@ -58,8 +58,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost("{accountId}/deposit")]
-    public async Task<IActionResult> Deposit(
-        int accountId, [FromBody] DepositRequest request)
+    public async Task<IActionResult> Deposit(int accountId, [FromBody] DepositRequest request)
     {
         var result = await _mediator.Send(
             new DepositCommand(GetUserId(), accountId, request.Amount));

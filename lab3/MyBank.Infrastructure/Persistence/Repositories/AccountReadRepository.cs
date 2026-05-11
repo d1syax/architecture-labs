@@ -11,8 +11,7 @@ public class AccountReadRepository : IAccountReadRepository
     public AccountReadRepository(BankDbContext db) => _db = db;
 
     public async Task<List<AccountReadModel>> GetByUserIdAsync(int userId) =>
-        await _db.Accounts
-            .Where(a => a.UserId == userId)
+        await _db.Accounts.Where(a => a.UserId == userId)
             .Select(a => new AccountReadModel(
                 a.Id,
                 a.AccountNumber,

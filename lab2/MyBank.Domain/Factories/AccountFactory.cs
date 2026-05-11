@@ -12,10 +12,7 @@ public class AccountFactory
         if (currencyResult.IsFailure)
             return Result.Failure<Account, DomainError>(currencyResult.Error);
 
-        var account = new Account(
-            Guid.NewGuid().ToString("N")[..16].ToUpper(),
-            currencyResult.Value,
-            userId);
+        var account = new Account(Guid.NewGuid().ToString("N")[..16].ToUpper(), currencyResult.Value, userId);
 
         return Result.Success<Account, DomainError>(account);
     }

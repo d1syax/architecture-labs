@@ -18,8 +18,7 @@ public class Account : Entity<int>
         Balance = 0;
     }
 
-    internal static Account Restore(int id, string accountNumber,
-        decimal balance, Currency currency, int userId)
+    internal static Account Restore(int id, string accountNumber, decimal balance, Currency currency, int userId)
     {
         return new Account(accountNumber, currency, userId)
         {
